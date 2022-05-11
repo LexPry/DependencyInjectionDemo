@@ -1,25 +1,32 @@
 package com.alex.work.dependencyinjectiondemo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
+
 
 public class Student
 {
     private int id;
     private String name;
     private List<Phone> ph;
-    private Address add;
+    @Autowired
+    private Address address;
 
-    public Student()
+    public Student(String name)
     {
-    }
-
-    public Student(int id, String name, List<Phone> ph, Address add)
-    {
-        this.id = id;
         this.name = name;
-        this.ph = ph;
-        this.add = add;
     }
+
+//
+//    @Autowired
+//    public Student(int id, String name, List<Phone> ph, Address address)
+//    {
+//        this.id = id;
+//        this.name = name;
+//        this.ph = ph;
+//        this.address = address;
+//    }
 
     public String showPhone()
     {
@@ -56,13 +63,20 @@ public class Student
         this.ph = ph;
     }
 
-    public Address getAdd()
+
+    public Address getAddress()
     {
-        return add;
+        return address;
     }
 
-    public void setAdd(Address add)
+    public void setAddress(Address address)
     {
-        this.add = add;
+        this.address = address;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Student{" + "id=" + id + ", name='" + name + '\'' + ", ph=" + ph + ", address=" + address + '}';
     }
 }

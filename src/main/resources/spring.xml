@@ -4,13 +4,24 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- bean definitions here -->
 
+    <!--   used Constructor, setter, and autowire/annotation injection -->
     <bean id="student"
-          class="com.alex.work.dependencyinjectiondemo.Student">
+          class="com.alex.work.dependencyinjectiondemo.Student" autowire="byType">
         <property name="ph" ref="phone"/>
+        <constructor-arg index="0" value="Josh Smith"/>
     </bean>
 
     <bean id="phone"
           class="com.alex.work.dependencyinjectiondemo.Phone">
-           <constructor-arg name="mob" value="Google Pixel 6"/>
+        <constructor-arg name="mob" value="Google Pixel 6"/>
+    </bean>
+
+    <!--    Created address but did not reference it in student bean, used @AutoWired -->
+    <bean id="address"
+          class="com.alex.work.dependencyinjectiondemo.Address">
+        <constructor-arg name="city" value="Shelby"/>
+        <constructor-arg name="country" value="USA"/>
+        <constructor-arg name="state" value="MI"/>
+        <constructor-arg name="zipcode" value="48217"/>
     </bean>
 </beans>
